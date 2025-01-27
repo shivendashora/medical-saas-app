@@ -34,8 +34,14 @@ const ImageAnnotator = ({ image, onBack, onSave }) => {
     const img = new Image();
     img.src = image;
     img.onload = () => {
+      let { width, height } = img;
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const scaleFactor = MAX_DIMENSION / Math.max(width, height);
+        width *= scaleFactor;
+        height *= scaleFactor;
+      }
       setLoadedImage(img);
-      setImageDimensions({ width: img.width, height: img.height });
+      setImageDimensions({ width, height });
     };
   }, [image]);
 

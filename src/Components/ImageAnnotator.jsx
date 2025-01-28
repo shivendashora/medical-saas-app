@@ -31,7 +31,7 @@ const ImageAnnotator = ({ image, onBack, onSave }) => {
   const imageRef = useRef(null);
 
   useEffect(() => {
-    const img = new Image();
+    const img = new Image(); 
     img.src = image;
     img.onload = () => {
       setLoadedImage(img);
